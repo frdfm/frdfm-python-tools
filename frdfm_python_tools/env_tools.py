@@ -2,11 +2,16 @@ import os
 from pathlib import Path
 
 
-def get_env(name: str, env_file: str = ".env", fallback: str = None) -> str | None:
-    value = os.getenv(name)
+def get_env(value0, env_var_name: str, env_file: str = ".env", fallback_value: str = None) -> str | None:
 
-    if value is not None:
-        return value
+    if value0:
+        return value0
+
+    if env_var_name:
+        value = os.getenv(env_var_name)
+
+        if value is not None:
+            return value
 
     env_path = Path(env_file)
 
@@ -19,7 +24,7 @@ def get_env(name: str, env_file: str = ".env", fallback: str = None) -> str | No
 
             key, value = line.split("=", 1)
 
-            if key.strip() == name:
+            if key.strip() == env_var_name:
                 return value.strip().strip("\"'")
 
-    return fallback
+    return fallback_value
