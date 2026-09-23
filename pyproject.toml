@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "frdfm-python-tools"
+version = "0.1.0"
+description = "Simple Python tools."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "GPL-3.0-or-later" }
+authors = [
+  { name = "Fereydoun Farrahi Moghaddam" }
+]
+
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/frdfm/frdfm-python-tools"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["frdfm_python_tools*"]
