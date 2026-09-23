@@ -13,18 +13,18 @@ def get_env(value0, env_var_name: str, env_file: str = ".env", fallback_value: s
         if value is not None:
             return value
 
-    env_path = Path(env_file)
+        env_path = Path(env_file)
 
-    if env_path.exists():
-        for line in env_path.read_text().splitlines():
-            line = line.strip()
+        if env_path.exists():
+            for line in env_path.read_text().splitlines():
+                line = line.strip()
 
-            if not line or line.startswith("#") or "=" not in line:
-                continue
+                if not line or line.startswith("#") or "=" not in line:
+                    continue
 
-            key, value = line.split("=", 1)
+                key, value = line.split("=", 1)
 
-            if key.strip() == env_var_name:
-                return value.strip().strip("\"'")
+                if key.strip() == env_var_name:
+                    return value.strip().strip("\"'")
 
     return fallback_value
